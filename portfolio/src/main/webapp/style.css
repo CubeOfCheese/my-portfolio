@@ -1,9 +1,24 @@
+body {
+    height: 10000px;
+}
 #content {
+    position: absolute;
+    top: 800px;
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+#heading {
+    position: absolute;
+    top: 20px;
+    left 20px;
+}
+
+#profile-img {
+    position: absolute;
+    z-index: -1;
 }
