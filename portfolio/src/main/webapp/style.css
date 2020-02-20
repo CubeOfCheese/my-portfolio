@@ -1,6 +1,6 @@
 body {
     height: 10000px;
-    background-image: url("./images/HeaderImage.jpg");
+    background-image: url("./images/HeaderImage.jpg"), linear-gradient(rgb(129, 19, 152), rgb(0, 204, 255));
     background-repeat: no-repeat;
     background-position: center top;
     background-size: 100vw;
