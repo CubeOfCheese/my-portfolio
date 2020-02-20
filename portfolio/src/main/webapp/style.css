@@ -1,5 +1,9 @@
 body {
     height: 10000px;
+    background-image: url("./images/HeaderImage.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100vw;
 }
 #content {
     position: absolute;
