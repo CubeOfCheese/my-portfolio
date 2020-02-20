@@ -4,10 +4,11 @@ body {
     background-repeat: no-repeat;
     background-position: center top;
     background-size: 100vw;
+    margin: none;
 }
 #content {
     position: absolute;
-    top: 800px;
+    top: 500px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -25,4 +26,22 @@ body {
 #profile-img {
     position: absolute;
     z-index: -1;
+}
+.resume-container {
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    padding-top: 56.25%;
+    margin: none;
+    border: none;
+}
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: none;
+    margin-right: none;
+    height: 100%;
+    width: 100%;
+    border: none;
 }
