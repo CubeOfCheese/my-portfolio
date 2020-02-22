@@ -1,39 +1,51 @@
 body {
     height: 10000px;
-    background-image: url("./images/HeaderImage.jpg");
+    background-image: url("./images/HeaderImage.jpg"), linear-gradient(rgb(117, 51, 147), rgb(117, 51, 147) 20%, rgb(22, 229, 236));
     background-repeat: no-repeat;
     background-position: center top;
     background-size: 100vw;
-    margin: none;
+    margin: 0px;
 }
 #content {
     position: absolute;
     top: 500px;
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-#greeting-container {
-  margin-top: 20px;
-}
-
 #heading {
+    margin: 10px;
     position: absolute;
     top: 20px;
-    left 20px;
+    left: 20px;
 }
-
-#profile-img {
-    position: absolute;
-    z-index: -1;
+#heading > h1 {
+    font-size: max(2.5em, 4vw);
+}
+.profile-links {
+    position: relative;
+    top: 150vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.profile-img {
+    width: 20vw;
+    height: 20vw;
+}
+.profile-img:hover {
+    width: 25vw;
+    height: 25vw;
 }
 .resume-container {
     position: relative;
-    width: 100vw;
+    top: 140vh;
     overflow: hidden;
-    padding-top: 56.25%;
+    padding-top: 80%;
     margin: none;
     border: none;
+    display: flex;
+    justify-content: center;
+    padding: 20vw;
 }
 iframe {
     position: absolute;
@@ -44,4 +56,26 @@ iframe {
     height: 100%;
     width: 100%;
     border: none;
+}
+#bio-container {
+    position: relative;
+    top: 100vh;
+    background-color: aqua;
+    margin: 7vw;
+    border-radius: 3vw;
+    padding: 3vw;
+}
+h2 {
+    font-size: max(2.25em, 3vw);
+    margin-left: 5vw;
+
+}
+#bio-paragraph {
+    
+    font-size: max(2em, 2.5vw);
+    margin: 5vw;
+}
+.c55 {
+    display: flex;
+    justify-content: center;
 }
