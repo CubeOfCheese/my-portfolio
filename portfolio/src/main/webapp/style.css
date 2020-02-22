@@ -1,6 +1,6 @@
 body {
     height: 10000px;
-    background-image: url("./images/HeaderImage.jpg"), linear-gradient(rgb(129, 19, 152), rgb(0, 204, 255));
+    background-image: url("./images/HeaderImage.jpg"), linear-gradient(rgb(117, 51, 147), rgb(117, 51, 147) 20%, rgb(22, 229, 236));
     background-repeat: no-repeat;
     background-position: center top;
     background-size: 100vw;
@@ -9,19 +9,17 @@ body {
 #content {
     position: absolute;
     top: 500px;
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
-
-#greeting-container {
-  margin-top: 20px;
-}
-
 #heading {
     margin: 10px;
     position: absolute;
     top: 20px;
-    left 20px;
+    left: 20px;
+}
+#heading > h1 {
+    font-size: max(2.5em, 4vw);
 }
 .profile-links {
     position: relative;
@@ -59,26 +57,24 @@ iframe {
     width: 100%;
     border: none;
 }
-
 #bio-container {
     position: relative;
     top: 100vh;
     background-color: aqua;
     margin: 7vw;
     border-radius: 3vw;
-    padding: 4vw;
+    padding: 3vw;
 }
 h2 {
-    font-size: 7vh;
+    font-size: max(2.25em, 3vw);
     margin-left: 5vw;
 
 }
-
 #bio-paragraph {
-    font-size: 4vh;
+    
+    font-size: max(2em, 2.5vw);
     margin: 5vw;
 }
-
 .c55 {
     display: flex;
     justify-content: center;
