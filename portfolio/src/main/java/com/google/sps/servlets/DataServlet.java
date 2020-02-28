@@ -28,5 +28,6 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text;");
     response.getWriter().println("Hello Billy T.!");
+
   }
 }
