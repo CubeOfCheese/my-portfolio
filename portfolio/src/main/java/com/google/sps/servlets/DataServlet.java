@@ -28,9 +28,9 @@ public class DataServlet extends HttpServlet {
     ArrayList<String> comments = new ArrayList<String>();
 
   public DataServlet() {
-    comments.add("{Author: 'Michael'}");
-    comments.add("{Author: 'Jenny'}");
-    comments.add("{Author: 'Hana'}");
+    comments.add("{\"Author\": \"Michael\"}");
+    comments.add("{\"Author\": \"Jenny\"}");
+    comments.add("{\"Author\": \"Hana\"}");
   }
 
 

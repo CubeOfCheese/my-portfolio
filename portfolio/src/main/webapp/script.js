@@ -27,6 +27,6 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 function getMessage() {
-    fetch('/data').then((response) => response.text())
-    .then((message) => document.getElementById('fetch-message').innerText = message);
+    fetch('/data').then((response) => response.json())
+    .then((message) => document.getElementById('fetch-message').innerText = message.Author);
 }
