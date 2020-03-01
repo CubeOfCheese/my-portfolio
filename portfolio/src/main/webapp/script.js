@@ -33,7 +33,8 @@ function getMessage() {
             var referral = document.createElement("div");
             var referralAuthor = document.createElement("h4");
             var referralContent = document.createElement("p");
-            referralAuthor.textContent = message[i].Author;
+            referralAuthor.textContent = message[i].author;
+            referralContent.textContent = message[i].content;
             referral.appendChild(referralAuthor);
             referral.appendChild(referralContent);
             document.getElementById('referrals-container').appendChild(referral);

@@ -28,9 +28,9 @@ public class DataServlet extends HttpServlet {
     ArrayList<String> referrals = new ArrayList<String>();
 
   public DataServlet() {
-    referrals.add("{\"Author\": \"Michael\"}");
-    referrals.add("{\"Author\": \"Jenny\"}");
-    referrals.add("{\"Author\": \"Hana\"}");
+    referrals.add("{\"author\": \"Michael\", \"content\": \"An example referral here\"}");
+    referrals.add("{\"author\": \"Jenny\", \"content\": \"An example referral here\"}");
+    referrals.add("{\"author\": \"Hana\", \"content\": \"An example referral here\"}");
   }
 
 
