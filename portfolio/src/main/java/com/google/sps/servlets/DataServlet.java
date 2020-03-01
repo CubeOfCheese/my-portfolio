@@ -25,20 +25,20 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-    ArrayList<String> comments = new ArrayList<String>();
+    ArrayList<String> referrals = new ArrayList<String>();
 
   public DataServlet() {
-    comments.add("{\"Author\": \"Michael\"}");
-    comments.add("{\"Author\": \"Jenny\"}");
-    comments.add("{\"Author\": \"Hana\"}");
+    referrals.add("{\"Author\": \"Michael\"}");
+    referrals.add("{\"Author\": \"Jenny\"}");
+    referrals.add("{\"Author\": \"Hana\"}");
   }
 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Gson gson = new Gson();
-    String json = gson.toJson(comments);
-    response.setContentType("text;");
-    response.getWriter().println(comments.get(0));
+    String json = gson.toJson(referrals);
+    response.setContentType("text");
+    response.getWriter().println(referrals);
   }
 }

@@ -28,5 +28,15 @@ function addRandomGreeting() {
 }
 function getMessage() {
     fetch('/data').then((response) => response.json())
-    .then((message) => document.getElementById('fetch-message').innerText = message.Author);
+    .then((message) => {
+        for (var i=0; i<message.length; i++) {
+            var referral = document.createElement("div");
+            var referralAuthor = document.createElement("h4");
+            var referralContent = document.createElement("p");
+            referralAuthor.textContent = message[i].Author;
+            referral.appendChild(referralAuthor);
+            referral.appendChild(referralContent);
+            document.getElementById('referrals-container').appendChild(referral);
+        }
+    });
 }
