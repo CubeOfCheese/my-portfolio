@@ -62,7 +62,7 @@ iframe {
 }
 #bio-container {
     position: relative;
-    top: 100vh;
+    top: 25vh;
     background-color: aqua;
     margin: 7vw;
     border-radius: 3vw;
