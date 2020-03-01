@@ -29,7 +29,7 @@ function addRandomGreeting() {
 function getMessage() {
     fetch('/data').then((response) => response.json())
     .then((message) => {
-        for (var i=0; i<message.length; i++) {
+        for (var i = 0; i<message.length; i++) {
             var referral = document.createElement("div");
             var referralAuthor = document.createElement("h4");
             var referralContent = document.createElement("p");

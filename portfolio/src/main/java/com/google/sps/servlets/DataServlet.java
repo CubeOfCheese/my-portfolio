@@ -25,9 +25,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-    ArrayList<String> referrals = new ArrayList<String>();
+  ArrayList<String> referrals = new ArrayList<String>();
 
-  public DataServlet() {
+  @Override
+  public void init() {
     referrals.add("{\"author\": \"Michael\", \"content\": \"An example referral here\"}");
     referrals.add("{\"author\": \"Jenny\", \"content\": \"An example referral here\"}");
     referrals.add("{\"author\": \"Hana\", \"content\": \"An example referral here\"}");
