@@ -14,6 +14,12 @@
 
 package com.google.sps.servlets;
 import com.google.gson.Gson;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import java.util.ArrayList;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -26,18 +32,25 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
 
   ArrayList<String> referrals;
+  DatastoreService datastore;
 
   @Override
   public void init() {
     referrals = new ArrayList<String>();
+    datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    Gson gson = new Gson();
-    String json = gson.toJson(referrals);
     response.setContentType("text");
+    Query query = new Query("Referral");
+    PreparedQuery results = datastore.prepare(query);
+    for (Entity entity : results.asIterable()) {
+        String author = (String) entity.getProperty("author");
+        String referralContent = (String) entity.getProperty("referralContent");
+        referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
+    }
     response.getWriter().println(referrals);
   }
 
@@ -45,7 +58,12 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String author = request.getParameter("author");
     String referralContent = request.getParameter("referralContent");
-    referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
+    Entity referralEntity = new Entity("Referral");
+    referralEntity.setProperty("author", author);
+    referralEntity.setProperty("referralContent", referralContent);
+
+    datastore.put(referralEntity);
+    // referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
 
     response.sendRedirect("/");
   }
