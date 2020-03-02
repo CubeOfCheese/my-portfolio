@@ -29,9 +29,7 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void init() {
-    referrals.add("{\"author\": \"Michael\", \"content\": \"An example referral here\"}");
-    referrals.add("{\"author\": \"Jenny\", \"content\": \"An example referral here\"}");
-    referrals.add("{\"author\": \"Hana\", \"content\": \"An example referral here\"}");
+    
   }
 
 
@@ -41,5 +39,17 @@ public class DataServlet extends HttpServlet {
     String json = gson.toJson(referrals);
     response.setContentType("text");
     response.getWriter().println(referrals);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    System.out.println("doPost triggered");
+    System.out.println(request.getParameter("author"));
+    System.out.println(request.getParameter("referralContent"));
+    String author = request.getParameter("author");
+    String referralContent = request.getParameter("referralContent");
+    referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
+
+    response.sendRedirect("/");
   }
 }
