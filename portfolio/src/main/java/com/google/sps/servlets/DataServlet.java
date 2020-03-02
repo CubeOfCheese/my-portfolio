@@ -25,11 +25,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  ArrayList<String> referrals = new ArrayList<String>();
+  ArrayList<String> referrals;
 
   @Override
   public void init() {
-    
+    referrals = new ArrayList<String>();
   }
 
 
@@ -43,9 +43,6 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    System.out.println("doPost triggered");
-    System.out.println(request.getParameter("author"));
-    System.out.println(request.getParameter("referralContent"));
     String author = request.getParameter("author");
     String referralContent = request.getParameter("referralContent");
     referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
