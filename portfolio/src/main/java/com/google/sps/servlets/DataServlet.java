@@ -31,8 +31,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  ArrayList<String> referrals;
-  DatastoreService datastore;
+  private ArrayList<String> referrals;
+  private DatastoreService datastore;
 
   @Override
   public void init() {
@@ -61,10 +61,7 @@ public class DataServlet extends HttpServlet {
     Entity referralEntity = new Entity("Referral");
     referralEntity.setProperty("author", author);
     referralEntity.setProperty("referralContent", referralContent);
-
     datastore.put(referralEntity);
-    // referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
-
     response.sendRedirect("/");
   }
 }
