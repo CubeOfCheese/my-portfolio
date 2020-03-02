@@ -13,7 +13,8 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
-
+import com.google.gson.Gson;
+import java.util.ArrayList;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +25,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  ArrayList<String> referrals = new ArrayList<String>();
+
+  @Override
+  public void init() {
+    referrals.add("{\"author\": \"Michael\", \"content\": \"An example referral here\"}");
+    referrals.add("{\"author\": \"Jenny\", \"content\": \"An example referral here\"}");
+    referrals.add("{\"author\": \"Hana\", \"content\": \"An example referral here\"}");
+  }
+
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text;");
-    response.getWriter().println("Hello Billy T.!");
-
+    Gson gson = new Gson();
+    String json = gson.toJson(referrals);
+    response.setContentType("text");
+    response.getWriter().println(referrals);
   }
 }

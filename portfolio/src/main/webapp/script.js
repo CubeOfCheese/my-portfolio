@@ -27,6 +27,17 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 function getMessage() {
-    fetch('/data').then((response) => response.text())
-    .then((message) => document.getElementById('fetch-message').innerText = message);
+    fetch('/data').then((response) => response.json())
+    .then((message) => {
+        for (var i = 0; i<message.length; i++) {
+            var referral = document.createElement("div");
+            var referralAuthor = document.createElement("h4");
+            var referralContent = document.createElement("p");
+            referralAuthor.textContent = message[i].author;
+            referralContent.textContent = message[i].content;
+            referral.appendChild(referralAuthor);
+            referral.appendChild(referralContent);
+            document.getElementById('referrals-container').appendChild(referral);
+        }
+    });
 }
