@@ -25,13 +25,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  ArrayList<String> referrals = new ArrayList<String>();
+  ArrayList<String> referrals;
 
   @Override
   public void init() {
-    referrals.add("{\"author\": \"Michael\", \"content\": \"An example referral here\"}");
-    referrals.add("{\"author\": \"Jenny\", \"content\": \"An example referral here\"}");
-    referrals.add("{\"author\": \"Hana\", \"content\": \"An example referral here\"}");
+    referrals = new ArrayList<String>();
   }
 
 
@@ -41,5 +39,14 @@ public class DataServlet extends HttpServlet {
     String json = gson.toJson(referrals);
     response.setContentType("text");
     response.getWriter().println(referrals);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String author = request.getParameter("author");
+    String referralContent = request.getParameter("referralContent");
+    referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
+
+    response.sendRedirect("/");
   }
 }
