@@ -20,6 +20,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 import java.util.ArrayList;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -61,6 +64,12 @@ public class DataServlet extends HttpServlet {
     Entity referralEntity = new Entity("Referral");
     referralEntity.setProperty("author", author);
     referralEntity.setProperty("referralContent", referralContent);
+    Document doc = Document.newBuilder().setContent(referralContent).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
+    referralEntity.setProperty("sentiment", score);
     datastore.put(referralEntity);
     response.sendRedirect("/");
   }
