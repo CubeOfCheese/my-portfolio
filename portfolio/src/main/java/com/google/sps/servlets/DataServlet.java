@@ -47,12 +47,16 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text");
-    Query query = new Query("Referral");
+    Query query = new Query("Referral").addSort("sentiment", SortDirection.ASCENDING);;
     PreparedQuery results = datastore.prepare(query);
     for (Entity entity : results.asIterable()) {
         String author = (String) entity.getProperty("author");
         String referralContent = (String) entity.getProperty("referralContent");
-        referrals.add("{\"author\": \"" + author + "\", \"content\": \"" + referralContent + "\"}");
+        double sentiment = (double) entity.getProperty("sentiment");
+        if (sentiment > 0) {
+            referrals.add("{\"author\": \"" + author 
+                + "\", \"content\": \"" + referralContent + "\"}");
+        }
     }
     response.getWriter().println(referrals);
   }
