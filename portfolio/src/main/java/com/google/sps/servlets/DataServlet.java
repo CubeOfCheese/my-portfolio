@@ -54,8 +54,7 @@ public class DataServlet extends HttpServlet {
         String referralContent = (String) entity.getProperty("referralContent");
         double sentiment = (double) entity.getProperty("sentiment");
         if (sentiment > 0) {
-            referrals.add("{\"author\": \"" + author 
-                + "\", \"content\": \"" + referralContent + "\"}");
+            referrals.add(String.format("{\"author\": \"%s\", \"content\": \"%s\"}", author, referralContent));
         }
     }
     response.getWriter().println(referrals);
