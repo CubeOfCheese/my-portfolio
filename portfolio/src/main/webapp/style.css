@@ -8,9 +8,13 @@ body {
 }
 #content {
     position: absolute;
-    top: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: calc(100vw / 16 * 9);
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 #heading {
     width: 90%;
@@ -41,28 +45,26 @@ body {
 }
 .resume-container {
     position: relative;
-    top: 140vh;
+    display: block;
+    top: 130vh;
     overflow: hidden;
-    padding-top: 80%;
-    margin: none;
+    width: 100%;
+    padding-top: calc(11 / 8 * 100%);
     border: none;
-    display: flex;
-    justify-content: center;
-    padding: 20vw;
 }
-iframe {
+#resume {
     position: absolute;
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
-    margin-left: none;
-    margin-right: none;
-    height: 100%;
-    width: 100%;
+    width: 60%;
+    height: 90%;
     border: none;
+    margin: auto;
 }
 #bio-container {
     position: relative;
-    top: 25vh;
     background-color: aqua;
     margin: 7vw;
     border-radius: 3vw;
@@ -74,11 +76,70 @@ h2 {
 
 }
 #bio-paragraph {
-    
     font-size: max(2em, 2.5vw);
     margin: 5vw;
 }
 .c55 {
     display: flex;
     justify-content: center;
+}
+nav {
+    display: flex;
+    width: 75%;
+    justify-content: space-around;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+}
+nav > a {
+    text-decoration: none;
+    color: aqua;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width:100%;
+    height:100%;
+    text-align: center;
+}
+nav > a:hover {
+    background-color: aqua;
+    color: black;
+}
+#music-video {
+    width: 80vw;
+    height: calc(80vw / 16 *9);
+}
+.music-iframe {
+    margin: 5px;
+}
+#music-video-title {
+    align-self: flex-start;
+}
+#bytes-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%
+}
+.byte-container {
+    position: relative;
+    display: block;
+    width: 50%;
+    padding-top: calc(16 / 9 * 50%);
+    margin: 10px;
+    border: none;
+}
+.byte {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: auto;
+}
+#byte-overlay {
+    margin-top: 0px;
+}
+#post-overlay {
+    margin-bottom: 0px;
 }
