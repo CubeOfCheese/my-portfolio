@@ -15,9 +15,57 @@
 package com.google.sps;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.ArrayList;
+
 
 public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
-    throw new UnsupportedOperationException("TODO: Implement this method.");
+    long reqEventDuration = request.getDuration();
+    Collection<String> reqAttendees = request.getAttendees();
+    ArrayList<TimeRange> queryResults = new ArrayList<TimeRange>();
+    queryResults.add(TimeRange.WHOLE_DAY);
+    // queryResults.add(TimeRange.fromStartDuration(12, 13));
+    if (request.getDuration() > TimeRange.WHOLE_DAY.duration()) {
+        queryResults.clear();
+    }
+    for (Event event : events) {
+
+        boolean noCommonAttendees = true;
+        for (String requestAttendee : reqAttendees) {
+            for (String eventAttendee : event.getAttendees()) {
+                if (eventAttendee == requestAttendee) noCommonAttendees = false;
+            }
+        }
+        if (noCommonAttendees) continue;
+
+        for (int i = 0; i<queryResults.size(); i++) {
+            TimeRange timeSlot = queryResults.get(i);
+            if (timeSlot.equals(event.getWhen())) {
+                queryResults.remove(i);
+            }
+            else {
+                if (timeSlot.contains(event.getWhen().start()) && timeSlot.contains(event.getWhen().end())) {
+                    if (timeSlot.start() == event.getWhen().start()) {
+                        queryResults.set(i, TimeRange.fromStartEnd(event.getWhen().end(), timeSlot.end(), false));
+                    }
+                    else {
+                        queryResults.set(i, TimeRange.fromStartEnd(timeSlot.start(), event.getWhen().start(), false));
+                        queryResults.add(TimeRange.fromStartEnd(event.getWhen().end(), timeSlot.end(), false));
+                    }
+                }
+                else if (timeSlot.contains(event.getWhen().start())) {
+                    queryResults.set(i, TimeRange.fromStartEnd(timeSlot.start(), event.getWhen().start(), false));
+                }
+                else if (timeSlot.contains(event.getWhen().end())) {
+                    queryResults.set(i, TimeRange.fromStartEnd(event.getWhen().end(), timeSlot.end(), false));
+                }
+            }
+        }
+    }
+    return queryResults;
   }
+//   private Collection<TimeRange> allFreeTimes(Collection<Event> events) {
+
+//   }
 }
